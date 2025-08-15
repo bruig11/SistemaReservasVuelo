@@ -39,32 +39,5 @@ public class Conexion {
             return null;
         }
     }
-   public static String Prueba() throws SQLException{
-    String resultado = "";
-    
-    //SQL REQUIERE TRY CATCH
-    try {
-            //declarar la conexion a sql server
-            Statement sql = (Statement) Conexion.getConexion().createStatement();
-            //variable con la sentencia o script sql
-             String Consulta = " Select Nombre,Apellido " +
-                               " From usuarios " ;
-                              
-         //Ejecutar la consulta t llenar una estructura con el o los resultados obtenidos 
-         ResultSet rs = sql.executeQuery(Consulta);
-         while (rs.next()){
-              String nombre = rs.getString("Nombre");
-              String apellido = rs.getString("Apellido");
-              
-                    System.out.println(nombre + " " + apellido + " " );
-         } 
-            
-    }catch(SQLServerException e){
-             JOptionPane.showMessageDialog(null, e.toString());
-        
-                    
-                    }
-    
-    return resultado;
-}
+ 
 }
