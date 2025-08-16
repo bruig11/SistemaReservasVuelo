@@ -146,6 +146,7 @@ public class FrmCrearReserva extends javax.swing.JFrame {
         getContentPane().add(txtCodReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 110, -1));
         getContentPane().add(dtpFechaReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 130, -1));
 
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/file.png"))); // NOI18N
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +155,7 @@ public class FrmCrearReserva extends javax.swing.JFrame {
         });
         getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, -1, -1));
 
+        btnGuardad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diskette.png"))); // NOI18N
         btnGuardad.setText("Guardar");
         btnGuardad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +164,7 @@ public class FrmCrearReserva extends javax.swing.JFrame {
         });
         getContentPane().add(btnGuardad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, -1, -1));
 
+        btnBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bin.png"))); // NOI18N
         btnBorrar.setText("Borrar");
         btnBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,6 +173,7 @@ public class FrmCrearReserva extends javax.swing.JFrame {
         });
         getContentPane().add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, -1, -1));
 
+        btnRefrescar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/loading-arrow.png"))); // NOI18N
         btnRefrescar.setText("Refrescar");
         btnRefrescar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
