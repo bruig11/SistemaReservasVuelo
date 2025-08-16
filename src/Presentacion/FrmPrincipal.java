@@ -36,7 +36,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnBuscarVuelo = new javax.swing.JButton();
         btnConsultarIte = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -117,6 +117,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnCrearReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearReservaActionPerformed
         // TODO add your handling code here:
+        FrmCrearReserva principal = new FrmCrearReserva();
+        principal.setLocationRelativeTo(null);
+        principal.setVisible(true);
+        
     }//GEN-LAST:event_btnCrearReservaActionPerformed
 
     /**

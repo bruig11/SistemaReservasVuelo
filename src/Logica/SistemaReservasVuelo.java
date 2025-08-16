@@ -4,6 +4,8 @@
  */
 package Logica;
 import Presentacion.FrmPrincipal;
+
+
 /**
  *
  * @author Garay_Ruiz
@@ -17,6 +19,7 @@ public class SistemaReservasVuelo {
         FrmPrincipal principal = new FrmPrincipal();
         principal.setLocationRelativeTo(null);
         principal.setVisible(true);
+        
     }
 
 }

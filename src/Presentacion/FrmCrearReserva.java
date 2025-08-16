@@ -3,6 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Presentacion;
+import Datos.Conexion;
+import Datos.Reserva;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+import java.sql.ResultSet;
+
+
 
 /**
  *
@@ -26,21 +34,237 @@ public class FrmCrearReserva extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jTextField4 = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jblReserva = new javax.swing.JLabel();
+        lblCliente = new javax.swing.JLabel();
+        lblVuelo = new javax.swing.JLabel();
+        lblFechaReserva = new javax.swing.JLabel();
+        lblCodigo = new javax.swing.JLabel();
+        lblEstado = new javax.swing.JLabel();
+        lblNumeroAsiento = new javax.swing.JLabel();
+        lblPrecio = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        txtCodigoConfirmacion = new javax.swing.JTextField();
+        txtEstado = new javax.swing.JTextField();
+        txtPrecioTotal = new javax.swing.JTextField();
+        txtNAsiento = new javax.swing.JTextField();
+        txtCodCliente = new javax.swing.JTextField();
+        txtCodVuelo = new javax.swing.JTextField();
+        txtCodReserva = new javax.swing.JTextField();
+        dtpFechaReserva = new com.toedter.calendar.JDateChooser();
+        btnNuevo = new javax.swing.JButton();
+        btnGuardad = new javax.swing.JButton();
+        btnBorrar = new javax.swing.JButton();
+        btnRefrescar = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 51, 204));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 676, 210));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/avion60x60.png"))); // NOI18N
+        jLabel1.setText("Crear Reserva");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 6, 254, -1));
+
+        jblReserva.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jblReserva.setText("Codigo Reserva");
+        getContentPane().add(jblReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 65, 110, 20));
+
+        lblCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblCliente.setText("Codigo Cliente");
+        getContentPane().add(lblCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 105, 91, 20));
+
+        lblVuelo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblVuelo.setText("Codigo Del Vuelo");
+        getContentPane().add(lblVuelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 145, 111, 20));
+
+        lblFechaReserva.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblFechaReserva.setText("Fecha de la Reserva");
+        getContentPane().add(lblFechaReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 140, 20));
+
+        lblCodigo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblCodigo.setText("Codigo De Confirmacion ");
+        getContentPane().add(lblCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, 20));
+
+        lblEstado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblEstado.setText("Estado");
+        getContentPane().add(lblEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 66, 20));
+
+        lblNumeroAsiento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNumeroAsiento.setText("Numero De Asiento");
+        getContentPane().add(lblNumeroAsiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 106, 116, -1));
+
+        lblPrecio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblPrecio.setText("Precio Total");
+        getContentPane().add(lblPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 68, -1, -1));
+
+        jTextField2.setEditable(false);
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 120, -1));
+
+        jTextField3.setEditable(false);
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 120, -1));
+        getContentPane().add(txtCodigoConfirmacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 120, -1));
+        getContentPane().add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 120, -1));
+        getContentPane().add(txtPrecioTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 120, -1));
+        getContentPane().add(txtNAsiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, 120, -1));
+        getContentPane().add(txtCodCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 70, -1));
+        getContentPane().add(txtCodVuelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 70, -1));
+        getContentPane().add(txtCodReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 110, -1));
+        getContentPane().add(dtpFechaReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 130, -1));
+
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, -1, -1));
+
+        btnGuardad.setText("Guardar");
+        btnGuardad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardadActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGuardad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, -1, -1));
+
+        btnBorrar.setText("Borrar");
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, -1, -1));
+
+        btnRefrescar.setText("Refrescar");
+        btnRefrescar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefrescarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRefrescar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        // TODO add your handling code here:
+       try{
+        int siguiente = Conexion.siguienteReserva();
+        txtCodReserva.setText(String.valueOf(siguiente));
+    }catch (Exception ex) {
+        JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+    }
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnGuardadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardadActionPerformed
+        // TODO add your handling code here:                                        
+       //sirve para guardar y modificar
+    Reserva miReserva = new Reserva();
+    miReserva.setIdReserva(Integer.parseInt(txtCodReserva.getText()));
+    miReserva.setIdCliente(Integer.parseInt(txtCodCliente.getText()));
+    miReserva.setIdVuelo(Integer.parseInt(txtCodVuelo.getText()));
+      if (dtpFechaReserva.getDate() != null) {
+        miReserva.setFechaReserva(new java.sql.Date(dtpFechaReserva.getDate().getTime()));
+    } else {
+        JOptionPane.showMessageDialog(null, "Por favor selecciona una fecha");
+        return;
+    }
+    miReserva.setCodigoConfirmacion(txtCodigoConfirmacion.getText());
+    miReserva.setEstadoReserva(txtEstado.getText());
+    miReserva.setNumeroAsiento(txtNAsiento.getText());
+    miReserva.setPrecioTotal(Float.parseFloat(txtPrecioTotal.getText()));
+    
+    int indice = 0;
+    //actualizar
+    try {
+        Reserva Consultada = Conexion.obtenerReserva(txtCodReserva.getText());
+        if (Consultada != null){
+            indice = Consultada.getIdReserva();
+        }
+        else {
+            indice = 0;
+        }
+    } catch (SQLException ex) {
+        indice = 0;
+       JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+    }
+    //actualizar↑
+    
+    //Agregar a la lista correspondiente
+    if (indice == 0)
+    {
+        try {
+            if(Conexion.insertReserva(miReserva)!=0)
+            JOptionPane.showMessageDialog(null, "RESERVA GUARDADA");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }else
+    {
+        //Actualizar
+        try {
+            if(Conexion.updateReserva(miReserva)!=0)
+            JOptionPane.showMessageDialog(null, "RESERVA MODIFICADA");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }
+    
+    }//GEN-LAST:event_btnGuardadActionPerformed
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        // TODO add your handling code here:
+        
+          try {
+        int idReserva = Integer.parseInt(txtCodReserva.getText());
+        
+        int confirmacion = JOptionPane.showConfirmDialog(null, 
+            "¿Está seguro de eliminar esta reserva?", 
+            "Confirmar eliminación", 
+            JOptionPane.YES_NO_OPTION);
+            
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            if (Conexion.deleteReserva(idReserva) != 0) {
+                JOptionPane.showMessageDialog(null, "RESERVA ELIMINADA");
+            }
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, ex.toString());
+    }
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void btnRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarActionPerformed
+        // TODO add your handling code here:
+     try {
+        ResultSet Resultado = Conexion.listarReservas();
+        if (Resultado != null) {
+            jTable1.setModel(DbUtils.resultSetToTableModel(Resultado));
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+    }
+    }//GEN-LAST:event_btnRefrescarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +302,31 @@ public class FrmCrearReserva extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBorrar;
+    private javax.swing.JButton btnGuardad;
+    private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnRefrescar;
+    private com.toedter.calendar.JDateChooser dtpFechaReserva;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel jblReserva;
+    private javax.swing.JLabel lblCliente;
+    private javax.swing.JLabel lblCodigo;
+    private javax.swing.JLabel lblEstado;
+    private javax.swing.JLabel lblFechaReserva;
+    private javax.swing.JLabel lblNumeroAsiento;
+    private javax.swing.JLabel lblPrecio;
+    private javax.swing.JLabel lblVuelo;
+    private javax.swing.JTextField txtCodCliente;
+    private javax.swing.JTextField txtCodReserva;
+    private javax.swing.JTextField txtCodVuelo;
+    private javax.swing.JTextField txtCodigoConfirmacion;
+    private javax.swing.JTextField txtEstado;
+    private javax.swing.JTextField txtNAsiento;
+    private javax.swing.JTextField txtPrecioTotal;
     // End of variables declaration//GEN-END:variables
 }
