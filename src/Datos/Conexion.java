@@ -163,5 +163,61 @@ public static ResultSet listarReservas() throws SQLException{
                      return null;
  }
 }
-      
+public static String nomCliente(int Id) throws SQLException{
+    String resultado = "";
+    
+    //SQL REQUIERE TRY CATCH
+    try {
+        //declarar la conexion a sql server
+        Statement sql = (Statement) Conexion.getConexion().createStatement();
+        //variable con la sentencia o script sql
+         String Consulta = " select (nombre + ' ' + apellido1 + ' ' + apellido2) as Cliente " +
+                           " From Cliente " +
+                           " Where idCliente = " + Id ; 
+     //Ejecutar la consulta t llenar una estructura con el o los resultados obtenidos 
+     ResultSet rs = sql.executeQuery(Consulta);
+     while (rs.next()){
+         //resultado = Integer.valueOf(rs.getString(1));//es mejor este 
+         resultado = rs.getString(1);//este es bueno pero
+     }
+        
+            
+    }catch(SQLServerException e){
+             JOptionPane.showMessageDialog(null, e.toString());
+        
+                    
+                    }
+    
+    
+    return resultado;
+}
+public static String numeroVuelo(int Id) throws SQLException{
+    String resultado = "";
+    
+    //SQL REQUIERE TRY CATCH
+    try {
+        //declarar la conexion a sql server
+        Statement sql = (Statement) Conexion.getConexion().createStatement();
+        //variable con la sentencia o script sql
+         String Consulta = " Select numeroVuelo " +
+                           " From Vuelo " +
+                           " Where idVuelo = " + Id ; 
+     //Ejecutar la consulta t llenar una estructura con el o los resultados obtenidos 
+     ResultSet rs = sql.executeQuery(Consulta);
+     while (rs.next()){
+         //resultado = Integer.valueOf(rs.getString(1));//es mejor este 
+         resultado = rs.getString(1);//este es bueno pero
+     }
+        
+            
+    }catch(SQLServerException e){
+             JOptionPane.showMessageDialog(null, e.toString());
+        
+                    
+                    }
+    
+    
+    return resultado;
+}
+    
 }

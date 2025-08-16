@@ -46,8 +46,8 @@ public class FrmCrearReserva extends javax.swing.JFrame {
         lblEstado = new javax.swing.JLabel();
         lblNumeroAsiento = new javax.swing.JLabel();
         lblPrecio = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtNombreCliente = new javax.swing.JTextField();
+        txtNumeroVuelo = new javax.swing.JTextField();
         txtCodigoConfirmacion = new javax.swing.JTextField();
         txtEstado = new javax.swing.JTextField();
         txtPrecioTotal = new javax.swing.JTextField();
@@ -60,6 +60,8 @@ public class FrmCrearReserva extends javax.swing.JFrame {
         btnGuardad = new javax.swing.JButton();
         btnBorrar = new javax.swing.JButton();
         btnRefrescar = new javax.swing.JButton();
+        encabezado = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(0, 51, 204));
@@ -78,7 +80,7 @@ public class FrmCrearReserva extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 676, 210));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 1040, 240));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 204));
@@ -112,22 +114,34 @@ public class FrmCrearReserva extends javax.swing.JFrame {
 
         lblNumeroAsiento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblNumeroAsiento.setText("Numero De Asiento");
-        getContentPane().add(lblNumeroAsiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 106, 116, -1));
+        getContentPane().add(lblNumeroAsiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 116, -1));
 
         lblPrecio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblPrecio.setText("Precio Total");
-        getContentPane().add(lblPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 68, -1, -1));
+        getContentPane().add(lblPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, -1, -1));
 
-        jTextField2.setEditable(false);
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 120, -1));
+        txtNombreCliente.setEditable(false);
+        getContentPane().add(txtNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 190, -1));
 
-        jTextField3.setEditable(false);
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 120, -1));
+        txtNumeroVuelo.setEditable(false);
+        getContentPane().add(txtNumeroVuelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 190, -1));
         getContentPane().add(txtCodigoConfirmacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 120, -1));
         getContentPane().add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 120, -1));
-        getContentPane().add(txtPrecioTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 120, -1));
-        getContentPane().add(txtNAsiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, 120, -1));
+        getContentPane().add(txtPrecioTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, 120, -1));
+        getContentPane().add(txtNAsiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 100, 120, -1));
+
+        txtCodCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCodClienteFocusLost(evt);
+            }
+        });
         getContentPane().add(txtCodCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 70, -1));
+
+        txtCodVuelo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCodVueloFocusLost(evt);
+            }
+        });
         getContentPane().add(txtCodVuelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 70, -1));
         getContentPane().add(txtCodReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 110, -1));
         getContentPane().add(dtpFechaReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 130, -1));
@@ -163,6 +177,29 @@ public class FrmCrearReserva extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnRefrescar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, -1, -1));
+
+        encabezado.setBackground(new java.awt.Color(204, 204, 204));
+
+        lblTitulo.setForeground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout encabezadoLayout = new javax.swing.GroupLayout(encabezado);
+        encabezado.setLayout(encabezadoLayout);
+        encabezadoLayout.setHorizontalGroup(
+            encabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(encabezadoLayout.createSequentialGroup()
+                .addGap(339, 339, 339)
+                .addComponent(lblTitulo)
+                .addContainerGap(701, Short.MAX_VALUE))
+        );
+        encabezadoLayout.setVerticalGroup(
+            encabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, encabezadoLayout.createSequentialGroup()
+                .addContainerGap(54, Short.MAX_VALUE)
+                .addComponent(lblTitulo)
+                .addContainerGap())
+        );
+
+        getContentPane().add(encabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -266,6 +303,28 @@ public class FrmCrearReserva extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_btnRefrescarActionPerformed
 
+    private void txtCodClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodClienteFocusLost
+        // TODO add your handling code here:
+        try{
+    int Id = Integer.parseInt(txtCodCliente.getText());
+    txtNombreCliente.setText(Conexion.nomCliente(Id));
+    
+    }catch (SQLException ex){
+    JOptionPane.showMessageDialog(null, ex.toString());
+    }
+    }//GEN-LAST:event_txtCodClienteFocusLost
+
+    private void txtCodVueloFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodVueloFocusLost
+        // TODO add your handling code here:
+         try{
+    int Id = Integer.parseInt(txtCodVuelo.getText());
+    txtNumeroVuelo.setText(Conexion.numeroVuelo(Id));
+    
+    }catch (SQLException ex){
+    JOptionPane.showMessageDialog(null, ex.toString());
+    }
+    }//GEN-LAST:event_txtCodVueloFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -307,11 +366,10 @@ public class FrmCrearReserva extends javax.swing.JFrame {
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnRefrescar;
     private com.toedter.calendar.JDateChooser dtpFechaReserva;
+    private javax.swing.JPanel encabezado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel jblReserva;
     private javax.swing.JLabel lblCliente;
@@ -320,6 +378,7 @@ public class FrmCrearReserva extends javax.swing.JFrame {
     private javax.swing.JLabel lblFechaReserva;
     private javax.swing.JLabel lblNumeroAsiento;
     private javax.swing.JLabel lblPrecio;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblVuelo;
     private javax.swing.JTextField txtCodCliente;
     private javax.swing.JTextField txtCodReserva;
@@ -327,6 +386,8 @@ public class FrmCrearReserva extends javax.swing.JFrame {
     private javax.swing.JTextField txtCodigoConfirmacion;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtNAsiento;
+    private javax.swing.JTextField txtNombreCliente;
+    private javax.swing.JTextField txtNumeroVuelo;
     private javax.swing.JTextField txtPrecioTotal;
     // End of variables declaration//GEN-END:variables
 }
